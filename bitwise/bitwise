@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+$handle = fopen('php://stdin', 'r');
+fscanf($handle, '%d', $testsCount);
+for ($testIndex = 0; $testIndex < $testsCount; $testIndex++) {
+    fscanf($handle, '%d %d', $N, $K);
+
+    $max = 0;
+    for ($i = 1; $i <= $N; ++$i) {
+        for ($j = $i + 1; $j <= $N; ++$j) {
+            $p = $i & $j;
+            if ($p > $max && $p < $K) {
+                $max = $p;
+            }
+        }
+    }
+    echo $max, PHP_EOL;
+}

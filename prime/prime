@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+$handle = fopen('php://stdin', 'r');
+fscanf($handle, '%d', $numbersCount);
+for ($numberIndex = 0; $numberIndex < $numbersCount; $numberIndex++) {
+    fscanf($handle, '%d', $number);
+
+    if ($number === 1) {
+        echo 'Not prime', PHP_EOL;
+        continue;
+    }
+
+    $isPrime = true;
+    for ($i = 2; $i * $i <= $number; ++$i) {
+        if ($number % $i === 0) {
+            $isPrime = false;
+            break;
+        }
+    }
+
+    echo($isPrime ? 'Prime' : 'Not prime'), PHP_EOL;
+}

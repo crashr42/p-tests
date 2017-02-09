@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+$firstNames = [];
+
+$handle = fopen('php://stdin', 'r');
+fscanf($handle, '%d', $profileCount);
+for ($profileIndex = 0; $profileIndex < $profileCount; $profileIndex++) {
+    fscanf($handle, '%s %s', $firstName, $email);
+    if (preg_match('/@gmail\.com/', $email)) {
+        $firstNames[] = $firstName;
+    }
+}
+
+sort($firstNames);
+
+foreach ($firstNames as $name) {
+    echo $name, PHP_EOL;
+}
